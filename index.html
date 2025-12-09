@@ -4,6 +4,106 @@
   <meta charset="UTF-8">
   <title>명상(明想) 랜딩페이지</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* 챗봇 스타일 추가 */
+    #chatbot-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    #chatbot-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
+    }
+    
+    #chatbot-iframe-container {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 400px;
+      height: 600px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      display: none;
+      z-index: 999;
+      background: white;
+    }
+    
+    #chatbot-iframe-container.active {
+      display: block;
+      animation: slideUp 0.3s ease;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    #chatbot-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    #close-chatbot {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    #close-chatbot:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    
+    /* 모바일 반응형 */
+    @media (max-width: 768px) {
+      #chatbot-iframe-container {
+        width: calc(100% - 40px);
+        height: calc(100% - 140px);
+        right: 20px;
+        bottom: 100px;
+      }
+      
+      #chatbot-button {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Hero -->
@@ -12,14 +112,14 @@
     <p>상상력과 사유를 통해 AI · 과학기술 · 정책을 탐구합니다</p>
     <a href="#about" class="btn">더 알아보기</a>
   </header>
-
+  
   <!-- About -->
   <section id="about">
     <h2>소개</h2>
     <p>명상(明想)은 "명섭의 상상력"에서 온 이름이자, 동시에 '사유와 성찰'을 뜻하는 명상의 의미도 담고 있습니다.</p>
     <p>기술과 정책을 연결하고, 새로운 가능성을 탐색하며, 지식을 나누는 데 가치를 둡니다.</p>
   </section>
-
+  
   <!-- 관심사 -->
   <section id="interests">
     <h2>관심사</h2>
@@ -29,17 +129,50 @@
       <li>지역 혁신과 미래 산업</li>
     </ul>
   </section>
-
+  
   <!-- Contact -->
   <section id="contact">
     <h2>연락하기</h2>
     <p>Email: <a href="mailto:glittery.stone.1981@gmail.com">glittery.stone.1981@gmail.com</a></p>
     <p>Blog: <a href="https://blog.naver.com/seokssong" target="_blank">https://blog.naver.com/seokssong</a></p>
   </section>
-
+  
   <!-- Footer -->
   <footer>
     © 2025 명상(明想)
   </footer>
+
+  <!-- 챗봇 토글 버튼 -->
+  <button id="chatbot-button" onclick="toggleChatbot()" title="AI 어시스턴트와 대화하기">
+    💬
+  </button>
+
+  <!-- 챗봇 iframe 컨테이너 -->
+  <div id="chatbot-iframe-container">
+    <button id="close-chatbot" onclick="toggleChatbot()">✕</button>
+    <iframe 
+      id="chatbot-iframe"
+      src="https://primary-production-ba17.up.railway.app/webhook/e5616171-e3b5-4c39-81d4-67409f9fa60a/chat"
+      allow="microphone"
+    ></iframe>
+  </div>
+
+  <script>
+    function toggleChatbot() {
+      const container = document.getElementById('chatbot-iframe-container');
+      container.classList.toggle('active');
+    }
+
+    // ESC 키로 챗봇 닫기
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const container = document.getElementById('chatbot-iframe-container');
+        if (container.classList.contains('active')) {
+          container.classList.remove('active');
+        }
+      }
+    });
+  </script>
+  
 </body>
 </html>
