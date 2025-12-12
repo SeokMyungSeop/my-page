@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Noto+Sans+KR&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #303030; /* 어두운 배경 */
+  background-color: #303030;
   color: #FFFFFF;
   font-family: 'Noto Sans KR', sans-serif;
   line-height: 1.6;
+  /* 모바일 스크롤 부드럽게 */
+  -webkit-overflow-scrolling: touch;
 }
 
 header {
@@ -19,7 +25,7 @@ header {
 header h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 3rem;
-  color: #51EEFC; /* 밝은 포인트 컬러 */
+  color: #51EEFC;
   margin: 0;
 }
 
@@ -39,11 +45,18 @@ header p {
   border-radius: 5px;
   font-weight: bold;
   transition: background 0.3s;
+  /* 모바일 터치 최적화 */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .btn:hover {
   background-color: #FFFFFF;
   color: #1269CC;
+}
+
+.btn:active {
+  transform: scale(0.98);
 }
 
 section {
@@ -63,6 +76,10 @@ ul {
   padding-left: 1.2rem;
 }
 
+li {
+  margin-bottom: 0.5rem;
+}
+
 a {
   color: #51EEFC;
   text-decoration: none;
@@ -78,4 +95,107 @@ footer {
   text-align: center;
   padding: 1.5rem 1rem;
   font-size: 0.9rem;
+  /* 챗봇 버튼 공간 확보 */
+  padding-bottom: 100px;
+}
+
+/* ===== 태블릿 반응형 ===== */
+@media (max-width: 768px) {
+  header {
+    padding: 3.5rem 1.5rem;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  section {
+    padding: 2rem 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  footer {
+    padding-bottom: 90px;
+  }
+}
+
+/* ===== 스마트폰 반응형 ===== */
+@media (max-width: 480px) {
+  header {
+    padding: 2.5rem 1rem;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+  }
+
+  .btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+    /* 터치하기 쉬운 크기 */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  section {
+    padding: 1.5rem 1rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  ul {
+    padding-left: 1rem;
+  }
+
+  li {
+    font-size: 0.95rem;
+  }
+
+  /* 이메일/블로그 링크 줄바꿈 */
+  #contact a {
+    word-break: break-all;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 1.2rem 1rem;
+    padding-bottom: 80px;
+  }
+}
+
+/* ===== 아주 작은 화면 ===== */
+@media (max-width: 360px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header p {
+    font-size: 0.9rem;
+  }
+
+  section {
+    padding: 1.2rem 0.8rem;
+  }
 }
