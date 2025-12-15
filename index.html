@@ -134,6 +134,64 @@
       height: calc(100% - 50px);
     }
 
+    /* 책 카드 스타일 */
+    .books-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .book-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e0e0e0;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+    }
+
+    .book-card h3 {
+      color: #667eea;
+      font-size: 1.3em;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    .book-card .book-description {
+      color: #555;
+      font-size: 0.95em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .book-card .book-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9em;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .book-card .book-link:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .book-icon {
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
     /* ===== 모바일 반응형 (태블릿) ===== */
     @media (max-width: 768px) {
       #chatbot-iframe-container {
@@ -157,6 +215,11 @@
         width: 40px;
         height: 40px;
         font-size: 20px;
+      }
+
+      .books-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
     }
 
@@ -214,6 +277,14 @@
         position: fixed;
         width: 100%;
       }
+
+      .book-card {
+        padding: 20px;
+      }
+
+      .book-card h3 {
+        font-size: 1.15em;
+      }
     }
 
     /* ===== 가로 모드 대응 ===== */
@@ -248,6 +319,38 @@
       <li>과학기술 정책 기획</li>
       <li>지역 혁신과 미래 산업</li>
     </ul>
+  </section>
+
+  <!-- 저서 섹션 추가 -->
+  <section id="books">
+    <h2>저서</h2>
+    <div class="books-container">
+      <!-- 첫 번째 책 -->
+      <div class="book-card">
+        <div class="book-icon">📚</div>
+        <h3>나 그리고 프롬프트, ChatGPT부터 시작하는 AI 활용법</h3>
+        <p class="book-description">
+          생성형 AI와 프롬프트 작성법을 쉽고 체계적으로 배울 수 있는 가이드북입니다. 
+          인공지능의 원리부터 실전 활용법까지, 초보자도 쉽게 이해할 수 있는 따뜻한 설명과 풍부한 예시를 담았습니다.
+        </p>
+        <a href="https://wikidocs.net/book/17643" target="_blank" class="book-link">
+          책 보러가기 →
+        </a>
+      </div>
+
+      <!-- 두 번째 책 -->
+      <div class="book-card">
+        <div class="book-icon">🎵</div>
+        <h3>수노AI 시작하기, 명상(明想)과 함께 배우는 쉬운 인공지능 오디오 생성</h3>
+        <p class="book-description">
+          인공지능 오디오 생성 플랫폼 '수노AI'를 처음 접하는 분들도 쉽게 따라할 수 있도록, 
+          한 걸음씩 친절하게 안내하는 실전 가이드입니다. 실제 사용 화면과 예시 중심으로 설명했습니다.
+        </p>
+        <a href="https://wikidocs.net/book/17834" target="_blank" class="book-link">
+          책 보러가기 →
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- Contact -->
